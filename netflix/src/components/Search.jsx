@@ -12,8 +12,12 @@ class Search extends Component{
     state = {
         Title: "Die Hard"
     }
-
-
+    SearchChange = async (Names) =>{
+        this.setState({
+            Title: Names
+        })
+    }
+    
     render(){
         const MovieName = this.state.Title
         return(
@@ -23,10 +27,13 @@ class Search extends Component{
         <InputGroup.Text id="inputGroup-sizing-sm">Search</InputGroup.Text>
         <Form.Control
           value = {this.state.Title}
+          onChange = {async event => {
+            await this.SearchChange(event.target.value)
+          }}
           aria-label="Search"
           aria-describedby="inputGroup-sizing-sm"
         />
-        <Button>Search</Button>
+        <Button onClick={()=> <MovieList Name={MovieName}/>}>Search</Button>
       </InputGroup>
       <Col>
       <MovieList Name = {MovieName}/>

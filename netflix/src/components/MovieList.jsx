@@ -15,12 +15,12 @@ componentDidMount = () => {
 }
 
 FetchMovies = async () =>{
+    console.log("it ran")
 const MovieName = this.props.Name
 try{
 console.log(MovieName)
 const resolve = await fetch('https://www.omdbapi.com/?i=tt3896198&apikey=1257858b&s='+MovieName,)
 const Movies = await resolve.json()
-console.log(Movies.Search)
 await this.setState({MoviesList: Movies.Search})}
 catch(error){
     console.log(error)
@@ -28,8 +28,6 @@ catch(error){
 }
     render(){
         if (this.state.MoviesList.length > 0){
-            console.log("it's done")
-            console.log(this.state.MoviesList)
             return(
                 <Container>
                     <Row>
