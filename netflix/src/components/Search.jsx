@@ -10,7 +10,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 
 class Search extends Component{
     state = {
-        Title: "Die Hard"
+        Title: this.props.NameMovie
     }
     SearchChange = async (Names) =>{
         this.setState({
@@ -21,8 +21,8 @@ class Search extends Component{
     render(){
         const MovieName = this.state.Title
         return(
-        <Container>
-            <Row>
+        
+            <Row style={{margin: "10px"}}>
         <InputGroup size="sm" className="mb-3">
         <InputGroup.Text id="inputGroup-sizing-sm">Search</InputGroup.Text>
         <Form.Control
@@ -33,13 +33,13 @@ class Search extends Component{
           aria-label="Search"
           aria-describedby="inputGroup-sizing-sm"
         />
-        <Button onClick={()=> <MovieList Name={MovieName}/>}>Search</Button>
+        <Button>Search</Button>
       </InputGroup>
       <Col>
       <MovieList Name = {MovieName}/>
       </Col>
       </Row>
-     </Container>
+     
         )
     }
 }
