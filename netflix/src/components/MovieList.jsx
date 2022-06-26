@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import { Component } from "react";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Spinner from 'react-bootstrap/Spinner';
 
 class MovieList extends Component {
     state = {
@@ -38,6 +39,10 @@ class MovieList extends Component {
         }
         else {
             console.log("wait")
+            return(
+            <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+        </Spinner>)
         }
 
     }
