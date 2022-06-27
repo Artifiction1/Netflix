@@ -7,7 +7,7 @@ import Spinner from 'react-bootstrap/Spinner';
 
 class MovieList extends Component {
     state = {
-        MoviesList: []
+        MoviesList: undefined
     }
 
     componentDidMount = () => {
@@ -28,8 +28,17 @@ class MovieList extends Component {
             console.log(error)
         }
     }
+    
+    componentDidUpdate = (prevProps, prevState) => {
+        if(prevProps.Name !== this.props.Name){
+            this.FetchMovies()
+            console.log("updated")
+        }
+    }
+
+
     render() {
-        if (this.state.MoviesList.length > 0) {
+        if (this.state.MoviesList !== undefined) {
             return (
                 <Row>
                     {this.state.MoviesList.map(movie => <MovieCard movies={movie} />)}
