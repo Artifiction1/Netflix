@@ -17,13 +17,16 @@ class Search extends Component{
             Title: Names
         })
     }
-    
+    componentDidUpdate = (prevProps, prevState) => {
+      if (prevProps.NameMovie !== this.props.NameMovie){
+      this.setState({Title: this.props.NameMovie})}
+    }
     render(){
         const MovieName = this.state.Title
         return(
         
             <Row style={{margin: "10px"}}>
-        <InputGroup size="sm" className="mb-3">
+        {/*<InputGroup size="sm" className="mb-3">
         <InputGroup.Text id="inputGroup-sizing-sm">Search</InputGroup.Text>
         <Form.Control
           value = {this.state.Title}
@@ -34,7 +37,8 @@ class Search extends Component{
           aria-describedby="inputGroup-sizing-sm"
         />
         <Button>Search</Button>
-      </InputGroup>
+      </InputGroup>*/}
+      <h2 className='col-12 '>{MovieName}</h2>
       <Col>
       <MovieList Name = {MovieName}/>
       </Col>
